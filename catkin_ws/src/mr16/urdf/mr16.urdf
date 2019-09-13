@@ -1,0 +1,361 @@
+<robot
+  name="mr16">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000538591381669132 -0.000796013390077529 0.15029824506083"
+        rpy="0 0 0" />
+      <mass
+        value="6.20364378504444" />
+      <inertia
+        ixx="0.101094100523689"
+        ixy="0.000446397315981664"
+        ixz="-0.0100325796904837"
+        iyy="0.107440995037768"
+        iyz="0.000684896162437496"
+        izz="0.0413625724663002" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Link_1">
+    <inertial>
+      <origin
+        xyz="0.109499429537614 0.00127734999021857 0.532740739016212"
+        rpy="0 0 0" />
+      <mass
+        value="15.3009110725275" />
+      <inertia
+        ixx="0.17711171931129"
+        ixy="-0.000258217361477095"
+        ixz="-0.0902218232079756"
+        iyy="0.294532768267818"
+        iyz="-0.00138073499002402"
+        izz="0.245180049849529" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_1"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_1" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="Link_2">
+    <inertial>
+      <origin
+        xyz="0.219886807756802 -0.207871674679376 1.2514850460622"
+        rpy="0 0 0" />
+      <mass
+        value="12.0089467273936" />
+      <inertia
+        ixx="1.79000760396687"
+        ixy="3.84246474442271E-05"
+        ixz="9.97549309592944E-06"
+        iyy="1.73265369716045"
+        iyz="0.140791163086416"
+        izz="0.0577005085656935" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_2"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Link_3">
+    <inertial>
+      <origin
+        xyz="0.266867482091816 -0.0222532099032627 1.58643411400742"
+        rpy="0 0 0" />
+      <mass
+        value="3.21027233963961" />
+      <inertia
+        ixx="0.00353615737545624"
+        ixy="-0.00051626040955544"
+        ixz="-0.00324001662283138"
+        iyy="0.0102408077538544"
+        iyz="0.000427334512781598"
+        izz="0.00968673804508061" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_3"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_3" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Link_4">
+    <inertial>
+      <origin
+        xyz="0.919787085547004 0.0306696509349129 1.6119541524158"
+        rpy="0 0 0" />
+      <mass
+        value="4.00043599724926" />
+      <inertia
+        ixx="0.00510345079441045"
+        ixy="-0.0257992257133259"
+        ixz="0.00187640494975463"
+        iyy="0.206864532590508"
+        iyz="0.000109210284202082"
+        izz="0.211424860974067" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_4"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_4" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="Link_5">
+    <inertial>
+      <origin
+        xyz="1.24726207493842 0.00398164304608598 1.61072250218365"
+        rpy="0 0 0" />
+      <mass
+        value="1.34975711386351" />
+      <inertia
+        ixx="0.000123563116879519"
+        ixy="0.000124368464115509"
+        ixz="-9.10870027349633E-06"
+        iyy="0.00325626508614178"
+        iyz="-5.73452233676735E-06"
+        izz="0.00334973580960724" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_5"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_5" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="Link_6">
+    <inertial>
+      <origin
+        xyz="1.37476419177093 -0.000229887479472446 1.61133668265096"
+        rpy="0 0 0" />
+      <mass
+        value="0.0508989989285404" />
+      <inertia
+        ixx="1.06805156907221E-06"
+        ixy="-1.43984584294168E-07"
+        ixz="4.40810732640226E-08"
+        iyy="1.22508869624082E-07"
+        iyz="2.96931336038133E-07"
+        izz="1.00197247383026E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://mr16/meshes/Link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Joint_6"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Link_6" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+</robot>
