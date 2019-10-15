@@ -1,4 +1,4 @@
-#include <ros/ros.h>
+﻿#include <ros/ros.h>
 #include <geometry_msgs/Twist.h>
 #include <sensor_msgs/Joy.h>
 #include <sstream>
@@ -7,52 +7,36 @@
 // create the RobotJoy class and define the joyCallback function that will take a joy msg
 class RobotJoy
 {
-public:
-  RobotJoy();
+	public:
+		RobotJoy();
 
-  //void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
-  void joyrobotCallback(const sensor_msgs::Joy::ConstPtr& joy);
-  void joydynamixelCallback(const sensor_msgs::Joy::ConstPtr& joy);
-  ros::NodeHandle nh_;
-  ros::Publisher robot_pub_;
-  ros::Publisher dynamixel_pub_;
-  ros::Subscriber joy_robot_sub_;
-  ros::Subscriber joy_dynamixel_sub_;
-
-  double l_scale_, a_scale_;
-
+		void joyrobotCallback(const sensor_msgs::Joy::ConstPtr& joy);
+		void joydynamixelCallback(const sensor_msgs::Joy::ConstPtr& joy);
+		ros::NodeHandle nh_;
+		ros::Publisher robot_pub_;
+		ros::Publisher dynamixel_pub_;
+		ros::Subscriber joy_robot_sub_;
+		ros::Subscriber joy_dynamixel_sub_;
 };
 
-//:参数的初始化列表
-//RobotJoy::RobotJoy(): linear_(1), angular_(2)
 RobotJoy::RobotJoy()
 {
-  //  initialize some parameters
+	// create a publisher that will publish the cmd from xbox //
+	robot_pub_ = nh_.advertise<controller::rob_param>("robot_joy_topic", 1);
+	dynamixel_pub_ = nh_.advertise<controller::rob_param>("dynamixel_joy_topic", 1);
 
-  //nh_.param("axis_linear", linear_, linear_);  
-  //nh_.param("axis_angular", angular_, angular_);
-  //nh_.param("scale_angular", a_scale_, a_scale_);
-  //nh_.param("scale_linear", l_scale_, l_scale_);
-
- // create a publisher that will advertise on the command_velocity topic of the turtle
-  robot_pub_ = nh_.advertise<controller::rob_param>("robot_joy_topic", 1);
-  dynamixel_pub_ = nh_.advertise<controller::rob_param>("dynamixel_joy_topic", 1);
-
-  // subscribe to the joystick topic for the input to drive the turtle
-  joy_robot_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 1, &RobotJoy::joyrobotCallback, this);
-  joy_dynamixel_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 1, &RobotJoy::joydynamixelCallback, this);
+	// subscribe to the joystick topic //
+	joy_robot_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 1, &RobotJoy::joyrobotCallback, this);
+	joy_dynamixel_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 1, &RobotJoy::joydynamixelCallback, this);
 }
-
 
 int x_j1=2, y_j2 = 3, z_j3 =5 ,rx_j4 = 0,ry_j5 = 1,rz_j6 = 5,forward_back=1,start=7,gear=7; 
 int select_mode=6;
 int rs_button = 4, md_ds_button = 6, rc_en_button =4, start_stop =3;
 
-//void RobotJoy::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 void RobotJoy::joyrobotCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-
-  controller::rob_param msg;
+	controller::rob_param msg;
 
     msg.x = joy->buttons[x_j1];
     msg.y = joy->buttons[y_j2];
@@ -74,15 +58,13 @@ void RobotJoy::joyrobotCallback(const sensor_msgs::Joy::ConstPtr& joy)
     msg.md_ds_button = joy->axes[md_ds_button];
     msg.rc_en_button = joy->axes[rc_en_button];
     msg.start_stop = joy->axes[start_stop];
-    std::cout<<"robot_pub_: joy->buttons[x_j1] "<<msg.x<<std::endl;
 
     robot_pub_.publish(msg);
 }
 
 void RobotJoy::joydynamixelCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-
-  controller::rob_param msg;
+	controller::rob_param msg;
 
     msg.x = joy->buttons[x_j1];
     msg.y = joy->buttons[y_j2];
@@ -104,35 +86,21 @@ void RobotJoy::joydynamixelCallback(const sensor_msgs::Joy::ConstPtr& joy)
     msg.md_ds_button = joy->axes[md_ds_button];
     msg.rc_en_button = joy->axes[rc_en_button];
     msg.start_stop = joy->axes[start_stop];
-    std::cout<<"dynamixel_pub_: joy->buttons[x_j1] "<<msg.x<<std::endl;
 
     dynamixel_pub_.publish(msg);
 }
 
-
 int main(int argc, char** argv)
 {
-  //sensor_msgs::Joy::ConstPtr& joy;//???????
-  sensor_msgs::Joy::ConstPtr joy;
-  //int linear_, angular_;   // used to define which axes of the joystick will control our turtle
-  
-  // initialize our ROS node, create a robot_joy, and spin our node until Ctrl-C is pressed
-  ros::init(argc, argv, "RobotJoy");
-  
-  RobotJoy robot_joy;
-  
- 
-  //joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, RobotJoy::joyCallback);
+	sensor_msgs::Joy::ConstPtr joy;
 
+	// initialize our ROS node, create a robot_joy, and spin our node until Ctrl-C is pressed
+	ros::init(argc, argv, "RobotJoy");
+  
+	RobotJoy robot_joy;
+  
     ros::Rate loop_rate(20);
-
-    
-//twist2.linear.x = a_scale_*joy->axes[forward_back];
-
-
-
-
-    ros::spin();//attention!!!!ros::spin();
+    ros::spin();
     loop_rate.sleep();
 }
 

@@ -1,4 +1,4 @@
-#include "ros/ros.h"
+﻿#include "ros/ros.h"
 #include "controller/interface.h"
 #include <cstdlib>
 #include "std_msgs/String.h"
@@ -99,17 +99,13 @@ int kbhit(void)
 #endif
 }
 
-
 //bool exector(controller::setpos::Request  &req,
  // controller::setpos::Response &res)
-bool exector(controller::setpos::Request  &req,
-  controller::setpos::Response &res)
+bool exector(controller::setpos::Request  &req, controller::setpos::Response &res)
 {
   //ROS_INFO("receive request from client: cmd=%s", req.cmd.c_str());
   //char * end;
   //int target_pos = static_cast<int>(strtol(req.cmd.c_str(),&end,10));
-
-
 
   //std::stringstream ss1(req.cmd);
   std::stringstream ss1(req.cmd);
@@ -124,19 +120,16 @@ bool exector(controller::setpos::Request  &req,
     ss1>>c;
   }
 
-
-
-
   //int target_pos = req.cmd;
   for(int i =0; i<3;i++)
   {
     if(target_pos[i] <= 0)
     {
-    target_pos[i] = 0;
+		target_pos[i] = 0;
     }
     else if(target_pos[i]>358)
     {
-    target_pos[i] = 359;
+		target_pos[i] = 359;
     }
   }
   
@@ -178,8 +171,8 @@ int main(int argc, char **argv)
   int dxl_goal_position[2] = {DXL_MINIMUM_POSITION_VALUE, DXL_MAXIMUM_POSITION_VALUE};         // Goal position
   uint8_t dxl_error = 0;                          // Dynamixel error
   uint16_t dxl_present_position = 0, dxl_present_position2 = 0, dxl_present_position3 = 0;
-                // Present position
-  // Open port
+	// Present position
+	// Open port
   if (portHandler->openPort())
   {
     ROS_INFO("Succeeded to open the port!\n");
