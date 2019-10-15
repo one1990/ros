@@ -1,2 +1,0 @@
-/usr/bin/ar qc /root/catkin_ws/devel/lib/libkaanh_lib.a  CMakeFiles/kaanh_lib.dir/kaanh.cpp.o
-/usr/bin/ranlib /root/catkin_ws/devel/lib/libkaanh_lib.a
