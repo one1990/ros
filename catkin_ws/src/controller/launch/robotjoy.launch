@@ -19,7 +19,7 @@
   <node pkg="controller" type="listener" name="listener"/>
 
 
- 
+ <!--
   <arg
     name="model" />
   <arg
@@ -27,7 +27,7 @@
     default="True" />
   <param
     name="robot_description"
-    textfile="$(find mr16)../mr16/urdf/mr16.urdf" />
+    textfile="$(find rokae)../rokae/urdf/rokae.urdf" />
   <param
     name="use_gui"
     value="$(arg gui)" />
@@ -37,15 +37,15 @@
     type="state_publisher" />
   <node
     name="move_Node3"
-    pkg="mr16"
+    pkg="rokae"
     type="move_Node3"
     />
   <node
     name="rviz"
     pkg="rviz"
     type="rviz"
-    args="-d $(find mr16)/urdf.rviz"/>
-
+    args="-d $(find rokae)/urdf.rviz"/>
+-->
  
 
 

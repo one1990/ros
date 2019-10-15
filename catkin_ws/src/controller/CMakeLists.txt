@@ -7,7 +7,14 @@ add_compile_options(-std=c++11)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation genmsg tf)
+find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
+  std_msgs
+  message_generation
+  genmsg
+  tf
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -43,23 +50,23 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
+ add_message_files(
    FILES
    rob_param.msg
    pose.msg
    motorpos.msg
 #   Message1.msg
 #   Message2.msg
-)
+ )
 
 ## Generate services in the 'srv' folder
-add_service_files(
+ add_service_files(
    FILES
    interface.srv
    setpos.srv
 #   Service1.srv
 #   Service2.srv
-)
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -69,10 +76,10 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
+ generate_messages(
    DEPENDENCIES
-   std_msgs  # Or other packages containing msgs
-)
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,7 +113,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES controller
-   CATKIN_DEPENDS message_runtime roscpp rospy std_msgs
+  CATKIN_DEPENDS message_runtime roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -118,7 +125,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
  include
- ${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -165,11 +172,18 @@ include_directories(
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
-## Mark executables and/or libraries for installation
-# install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_node
+## Mark executables for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
+# install(TARGETS ${PROJECT_NAME}_node
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )
+
+## Mark libraries for installation
+## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_libraries.html
+# install(TARGETS ${PROJECT_NAME}
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 # )
 
 ## Mark cpp header files for installation
@@ -217,22 +231,17 @@ target_link_libraries(controller ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pt
 #add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 
 
-#add_executable(move_Node src/move.cpp)
-#target_link_libraries(move_Node ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs)
+# add_executable(move_Node src/move.cpp)
+# target_link_libraries(move_Node ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs)
 
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs)
 
-
-
 add_executable(dynamixel_Controller src/dynamixel_controller.cpp)
 target_link_libraries(dynamixel_Controller ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs dxl_x64_cpp)
 
-
-
 add_executable(RobotJoy src/RobotJoy.cpp)
 target_link_libraries(RobotJoy ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs dxl_x64_cpp)
-
 
 add_executable(steering_engine src/steering_engine.cpp)
 target_link_libraries(steering_engine ${catkin_LIBRARIES} ${aris_LIBRARIES} atomic pthread stdc++fs dxl_x64_cpp)
