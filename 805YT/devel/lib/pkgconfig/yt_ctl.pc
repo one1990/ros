@@ -1,0 +1,8 @@
+prefix=/home/kaanh/Desktop/805YT/devel
+
+Name: yt_ctl
+Description: Description of yt_ctl
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/kaanh/Desktop/805YT/devel/lib 
+Requires: 

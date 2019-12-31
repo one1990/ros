@@ -1,0 +1,2 @@
+yt_ctl
+-DCATKIN_DEVEL_PREFIX=/home/kaanh/Desktop/805YT/devel -DCMAKE_INSTALL_PREFIX=/home/kaanh/Desktop/805YT/install -G Unix Makefiles
